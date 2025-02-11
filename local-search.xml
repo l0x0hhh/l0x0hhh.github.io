@@ -4,26 +4,19 @@
   
   
   <entry>
-    <title>post</title>
+    <title>长河</title>
     <link href="/2025/02/11/post/"/>
     <url>/2025/02/11/post/</url>
     
-    <content type="html"><![CDATA[<h1 id="This-is-an-H1"><a href="#This-is-an-H1" class="headerlink" title="This is an H1"></a>This is an H1</h1><h2 id="This-is-an-H2"><a href="#This-is-an-H2" class="headerlink" title="This is an H2"></a>This is an H2</h2><blockquote><p>引用引用引用引用引用引用引用引用引用引用引用<br>引用引用引用引用引用引用引用引用引用引用引用<br>引用引用引用引用引用引用引用引用引用引用引用</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>她总说，檐水击石，千年也不过磨出半寸凹痕。那时我不懂，直到某日在敦煌鸣沙山，见一弯月牙泉躺在金色沙丘之间，方知滴水穿石的执念里，藏着天地最温柔的暴力。</p><p>生命原是条不知疲倦的长河。我们在上游追逐着碎银般的浪花，看晨雾如何将山影酿成青黛色的酒。河床深处的鹅卵石被冲刷得浑圆，像极了那些被岁月包浆的往事。王维在辋川别业写下”行到水穷处，坐看云起时”，却不知九曲黄河万里沙，正是要撞碎在龙门断崖，才能化作惊雷般的瀑布。</p><p>中游的暗礁总在月光最皎洁时浮现。苏轼夜游赤壁，见江流有声，断岸千尺，方觉”哀吾生之须臾”；李白醉后捞月，方知冰凉的江水比长安的酒更醒人。那些看似偶然的漩涡，实则是命运在暗处布下的星图。就像塔克拉玛干沙漠中的胡杨，用三千年的站姿告诉我们：真正的生命从不惧怕脱水而亡，它只是把年轮刻成了等待雨季的钟摆。</p><p>当河流终于抵达入海口，咸涩的风里飘着普鲁斯特的玛德琳蛋糕香。潮水退去时，沙滩上留下的不只是贝壳，还有屈原的香草美人、梵高燃烧的向日葵、曹雪芹未完的脂砚斋批语。它们像散落的星子，在咸湿的雾气中重组着银河的密码。此刻方懂得，为何敦煌壁画上的飞天要逆风执炬——原来灰烬里开出的莲花，比火焰本身更接近永恒。</p><p>搁笔时，砚台里的墨痕正在晕开。窗外的梧桐叶将月光筛成流动的银沙，恍若看见张岱在湖心亭看雪，袁宏道在虎丘听曲，沈复在浮生六记里描摹芸娘的耳坠。这些细碎的微光在时空长河里明明灭灭，恰似寒潭渡鹤影，又像冷月葬诗魂。或许生命最动人的章节，从来不在波澜壮阔处，而在某个起风的深夜，你突然听懂了十五岁那年错过的蝉鸣。</p>]]></content>
     
     
     
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2025/02/11/hello-world/"/>
-    <url>/2025/02/11/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
+    <tags>
+      
+      <tag>文学</tag>
+      
+    </tags>
     
   </entry>
   
