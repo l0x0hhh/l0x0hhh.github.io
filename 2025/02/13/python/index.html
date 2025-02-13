@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="鎏灏">
+  <meta name="keywords" content="奇思妙想">
+  
+    <meta name="description" content="“任何足够先进的科技，都与魔法无异。” —— 克拉克第三定律今天，你就是霍格沃茨的新生，而Python是你人生中的第一根魔法杖。   一、欢迎来到对角巷：安装Python的正确姿势魔杖选择仪式（安装Python）    访问魔法部官网领取你的魔杖（安装包）   切记勾选”Add Python to PATH”——这相当于给你的魔杖刻上专属符文   在命令行输入python --version，看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当Python成为你的魔法杖：写给麻瓜程序员的入门指南">
+<meta property="og:url" content="https://l0x0hhh.github.io/2025/02/13/python/index.html">
+<meta property="og:site_name" content="Aurora">
+<meta property="og:description" content="“任何足够先进的科技，都与魔法无异。” —— 克拉克第三定律今天，你就是霍格沃茨的新生，而Python是你人生中的第一根魔法杖。   一、欢迎来到对角巷：安装Python的正确姿势魔杖选择仪式（安装Python）    访问魔法部官网领取你的魔杖（安装包）   切记勾选”Add Python to PATH”——这相当于给你的魔杖刻上专属符文   在命令行输入python --version，看">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-13T09:06:57.000Z">
+<meta property="article:modified_time" content="2025-02-13T09:26:33.546Z">
+<meta property="article:author" content="鎏灏">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>当Python成为你的魔法杖：写给麻瓜程序员的入门指南 - Aurora</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"l0x0hhh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":"ture","scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>晚鲸</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="当Python成为你的魔法杖：写给麻瓜程序员的入门指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        鎏灏
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-13 17:06" pubdate>
+          2025年2月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">当Python成为你的魔法杖：写给麻瓜程序员的入门指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p><strong>“任何足够先进的科技，都与魔法无异。”</strong> —— 克拉克第三定律<br>今天，你就是霍格沃茨的新生，而Python是你人生中的第一根魔法杖。</p>
+</blockquote>
+<hr>
+<h2 id="一、欢迎来到对角巷：安装Python的正确姿势"><a href="#一、欢迎来到对角巷：安装Python的正确姿势" class="headerlink" title="一、欢迎来到对角巷：安装Python的正确姿势"></a>一、欢迎来到对角巷：安装Python的正确姿势</h2><p><strong>魔杖选择仪式（安装Python）</strong>  </p>
+<ol>
+<li>访问<a target="_blank" rel="noopener" href="https://www.python.org/">魔法部官网</a>领取你的魔杖（安装包）  </li>
+<li>切记勾选”Add Python to PATH”——这相当于给你的魔杖刻上专属符文  </li>
+<li>在命令行输入<code>python --version</code>，看到版本号就像看到魔杖迸发的火星一样令人激动</li>
+</ol>
+<p><strong>思考题</strong>：为什么程序员总说”Hello World”？这算不算是数字世界的”荧光闪烁”咒？</p>
+<hr>
+<h2 id="二、咒语基础：让计算机开口说话的魔法"><a href="#二、咒语基础：让计算机开口说话的魔法" class="headerlink" title="二、咒语基础：让计算机开口说话的魔法"></a>二、咒语基础：让计算机开口说话的魔法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 你的第一个咒语</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;苹果从树上掉下来，但牛顿说：&#x27;不，这是我的代码！&#x27;&quot;</span>) <br><br><span class="hljs-comment"># 变量就像变形术</span><br>magic_word = <span class="hljs-string">&quot;Oculus Reparo&quot;</span>  <span class="hljs-comment"># 修复咒</span><br>broken_glasses = <span class="hljs-number">3</span><br>fixed_glasses = broken_glasses * <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;修复后的眼镜数量：<span class="hljs-subst">&#123;fixed_glasses&#125;</span>&quot;</span>)  <span class="hljs-comment"># f-string是魔法墨水</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>魔法原理</strong>：  </p>
+<ul>
+<li><code>=</code>不是等号，而是<strong>复制咒</strong>（把右边的值赋给左边）  </li>
+<li>变量名就像咒语名，<code>user_age</code>比<code>ua</code>更有魔力（PEP8规范）</li>
+</ul>
+<hr>
+<h2 id="三、条件判断：预言家日报的真相过滤器"><a href="#三、条件判断：预言家日报的真相过滤器" class="headerlink" title="三、条件判断：预言家日报的真相过滤器"></a>三、条件判断：预言家日报的真相过滤器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">today = <span class="hljs-string">&quot;周一&quot;</span><br><span class="hljs-keyword">if</span> today <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;周六&quot;</span>, <span class="hljs-string">&quot;周日&quot;</span>]:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;去霍格莫德村喝黄油啤酒！&quot;</span>)<br><span class="hljs-keyword">elif</span> today == <span class="hljs-string">&quot;周五&quot;</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;准备迎接神奇动物在哪里之——Deadline来袭！&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;乖乖去上魔药课吧（写代码）&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>黑魔法防御</strong>：  </p>
+<ul>
+<li><code>==</code>是照妖镜（判断相等），<code>=</code>是复方汤剂（赋值）  </li>
+<li>缩进是魔法的呼吸节奏，错一个空格就像念错咒语音节</li>
+</ul>
+<hr>
+<h2 id="四、循环咒语：时间转换器的秘密"><a href="#四、循环咒语：时间转换器的秘密" class="headerlink" title="四、循环咒语：时间转换器的秘密"></a>四、循环咒语：时间转换器的秘密</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># for循环就像时间转换器</span><br>magic_items = [<span class="hljs-string">&quot;隐身衣&quot;</span>, 老魔杖, <span class="hljs-string">&quot;复活石&quot;</span>]<br><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> magic_items:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;死亡圣器：<span class="hljs-subst">&#123;item&#125;</span> 已加入收藏夹&quot;</span>)<br><br><span class="hljs-comment"># while循环是永动机警告⚠️</span><br>cookie = <span class="hljs-number">1</span><br><span class="hljs-keyword">while</span> cookie &lt; <span class="hljs-number">10</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;吃了<span class="hljs-subst">&#123;cookie&#125;</span>块比比多味豆&quot;</span>)<br>    cookie += <span class="hljs-number">1</span>  <span class="hljs-comment"># 记得这个！否则会进入阿兹卡班（无限循环）</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>魔法事故案例</strong>：<br>2019年，某实习生忘记<code>cookie +=1</code>，创造出史上第一个数字摄魂怪（内存溢出）  </p>
+<hr>
+<h2 id="五、函数：定制你的专属咒语"><a href="#五、函数：定制你的专属咒语" class="headerlink" title="五、函数：定制你的专属咒语"></a>五、函数：定制你的专属咒语</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">幻影移形</span>(<span class="hljs-params">出发地, 目的地</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;魔法部认证的瞬移咒&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">if</span> 目的地 == <span class="hljs-string">&quot;女贞路&quot;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;警告！禁止接近救世主&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;啪！从<span class="hljs-subst">&#123;出发地&#125;</span>闪现到<span class="hljs-subst">&#123;目的地&#125;</span>&quot;</span><br><br><span class="hljs-built_in">print</span>(幻影移形(<span class="hljs-string">&quot;格里莫广场12号&quot;</span>, <span class="hljs-string">&quot;霍格沃茨厨房&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p><strong>高阶魔法</strong>：  </p>
+<ul>
+<li>参数是咒语成分，返回值是咒语效果  </li>
+<li>好的函数名比魔杖木材更重要（拒绝<code>def a()</code>的黑暗艺术）</li>
+</ul>
+<hr>
+<h2 id="六、黑暗艺术防御：常见错误解密"><a href="#六、黑暗艺术防御：常见错误解密" class="headerlink" title="六、黑暗艺术防御：常见错误解密"></a>六、黑暗艺术防御：常见错误解密</h2><table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>麻瓜翻译</th>
+<th>解咒方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SyntaxError</td>
+<td>咒语念错音节</td>
+<td>检查冒号&#x2F;引号&#x2F;括号</td>
+</tr>
+<tr>
+<td>NameError</td>
+<td>召唤不存在的精灵</td>
+<td>检查变量名是否拼写正确</td>
+</tr>
+<tr>
+<td>IndentationError</td>
+<td>魔杖挥动轨迹错误</td>
+<td>统一用4个空格</td>
+</tr>
+<tr>
+<td>TypeError</td>
+<td>把青蛙变成茶杯却忘了茶托</td>
+<td>检查数据类型是否匹配</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、终极思考：代码即魔法"><a href="#七、终极思考：代码即魔法" class="headerlink" title="七、终极思考：代码即魔法"></a>七、终极思考：代码即魔法</h2><p>当你在写：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>([<span class="hljs-string">&quot;狮院&quot;</span>, <span class="hljs-string">&quot;蛇院&quot;</span>, <span class="hljs-string">&quot;獾院&quot;</span>, <span class="hljs-string">&quot;鹰院&quot;</span>]))<br></code></pre></td></tr></table></figure>
+
+<p>计算机真的在”理解”这些文字吗？不，它只是在执行：<br><code>01010011 01101111 01110010 01110100...</code><br>这像极了魔法——我们创造自己的符号系统，让硅基生物以为在理解人类文明。</p>
+<p><strong>哲学时刻</strong>：  </p>
+<ul>
+<li>编程是21世纪的炼金术  </li>
+<li>bug不是错误，是代码在反抗”魔法部”的统治  </li>
+<li>每个程序员都是数字世界的梅林</li>
+</ul>
+<hr>
+<h2 id="你的第一个魔法任务："><a href="#你的第一个魔法任务：" class="headerlink" title="你的第一个魔法任务："></a>你的第一个魔法任务：</h2><p>用Python写出能打印出以下图案的咒语：  </p>
+<pre><code class="hljs">▲▲▲  
+▲★▲  
+▲▲▲  
+</code></pre>
+<p>（提示：字符串乘法像复制咒，<code>print</code>的换行符是<code>\n</code>）  </p>
+<blockquote>
+<p><strong>记住：</strong><br>在这个世界，<br>你不是在学习编程，<br>而是在修炼现代魔法。<br>魔杖（键盘）已就绪，<br>开始你的魔法纪元吧！ 🧙♂️💻</p>
+</blockquote>
+<hr>
+<p><strong>彩蛋</strong>：在Python交互环境输入<code>import this</code>，领取你的《Python之禅》魔法卷轴。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>当Python成为你的魔法杖：写给麻瓜程序员的入门指南</div>
+      <div>https://l0x0hhh.github.io/2025/02/13/python/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>鎏灏</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/12/c-test/" title="C语言的魔法：那些看似简单却暗藏玄机的代码">
+                        <span class="hidden-mobile">C语言的魔法：那些看似简单却暗藏玄机的代码</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"qUomcK7TYGkdfl7MJY06WQyE-MdYXbMMI","appKey":"0XVVojD2eMMwUk7ET1QbLFOd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://quomck7t.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
