@@ -27,7 +27,7 @@
 <meta property="og:description" content="前言C语言被称为“编程界的拉丁语”——它简洁、强大，但稍有不慎就会让你陷入深渊。许多初学者认为C语言枯燥，但实际上，它藏着无数让人拍案叫绝的“小聪明”。本文将分享几个语法简单但逻辑巧妙的代码片段，带你感受C语言独特的魅力。  1. 不用循环打印1到100？递归的魔法如果你被要求“不用for或while打印1到100”，你会怎么做？答案可以是递归！   12345678910111213#inclu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-12T09:41:01.000Z">
-<meta property="article:modified_time" content="2025-02-12T09:48:45.144Z">
+<meta property="article:modified_time" content="2025-02-13T02:48:45.423Z">
 <meta property="article:author" content="鎏灏">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -310,17 +310,23 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> SQUARE(x) ((x) * (x))</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> result = SQUARE(<span class="hljs-number">3</span> + <span class="hljs-number">2</span>); <span class="hljs-comment">// 展开为 (3+2)*(3+2)=25</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, result);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><strong>陷阱警告</strong>：<br>虽然宏很强大，但要注意运算符优先级！比如<code>SQUARE(a++)</code>可能导致未定义行为（展开为<code>a++ * a++</code>）。这也是为什么C++推崇<code>constexpr</code>的原因。</p>
 <hr>
-<h3 id="5-最简“贪吃蛇”：一行代码的无限循环"><a href="#5-最简“贪吃蛇”：一行代码的无限循环" class="headerlink" title="5. 最简“贪吃蛇”：一行代码的无限循环"></a>5. <strong>最简“贪吃蛇”：一行代码的无限循环</strong></h3><p>你能看出这段代码在做什么吗？  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123; <span class="hljs-keyword">while</span>(<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&gt; &quot;</span>) &amp;&amp; <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%*d&quot;</span>)); &#125;<br></code></pre></td></tr></table></figure>
-<p><strong>运行效果</strong>：程序会不断打印<code>&gt; </code>并等待输入，直到用户输入非数字内容。<br><strong>逻辑亮点</strong>：  </p>
+<h3 id="5-作用域的奥秘：局部变量与全局变量的博弈"><a href="#5-作用域的奥秘：局部变量与全局变量的博弈" class="headerlink" title="5. 作用域的奥秘：局部变量与全局变量的博弈"></a>5. <strong>作用域的奥秘：局部变量与全局变量的博弈</strong></h3><p>C语言的作用域规则看似简单，但隐藏着许多有趣的细节。看看这段代码：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// 全局变量</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">foo</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">20</span>; <span class="hljs-comment">// 局部变量</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Local x: %d\n&quot;</span>, x); <span class="hljs-comment">// 输出20</span><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">bar</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Global x: %d\n&quot;</span>, x); <span class="hljs-comment">// 输出10</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    foo();<br>    bar();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>逻辑亮点</strong>：  </p>
 <ul>
-<li><code>printf</code>返回成功打印的字符数（此处为2），因此条件恒为真。  </li>
-<li><code>scanf(&quot;%*d&quot;)</code>会跳过输入的数字（<code>*</code>表示忽略存储），继续循环。</li>
+<li>局部变量会“遮蔽”同名的全局变量。  </li>
+<li>在<code>foo</code>函数中，局部变量<code>x</code>优先于全局变量<code>x</code>。  </li>
+<li>在<code>bar</code>函数中，由于没有局部变量<code>x</code>，全局变量<code>x</code>被使用。</li>
 </ul>
 <hr>
-<h3 id="6-结构体的内存对齐：隐藏的“空白”"><a href="#6-结构体的内存对齐：隐藏的“空白”" class="headerlink" title="6. 结构体的内存对齐：隐藏的“空白”"></a>6. <strong>结构体的内存对齐：隐藏的“空白”</strong></h3><p>想知道结构体实际占用了多少内存吗？试试这个：  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Mystery</span> &#123;</span><br>    <span class="hljs-type">char</span> a;      <span class="hljs-comment">// 1字节</span><br>    <span class="hljs-type">int</span> b;       <span class="hljs-comment">// 4字节</span><br>    <span class="hljs-type">short</span> c;     <span class="hljs-comment">// 2字节</span><br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Size: %zu\n&quot;</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> Mystery)); <span class="hljs-comment">// 输出可能是12（取决于编译器对齐规则）</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>逻辑揭秘</strong>：由于内存对齐（通常按4字节对齐），结构体的实际大小可能比成员总和更大。通过<code>#pragma pack(1)</code>可以禁用对齐，但会牺牲性能。</p>
+<h3 id="6-文件读写：C语言与文件的对话"><a href="#6-文件读写：C语言与文件的对话" class="headerlink" title="6. 文件读写：C语言与文件的对话"></a>6. <strong>文件读写：C语言与文件的对话</strong></h3><p>C语言的文件操作功能强大且灵活。以下是一个简单的文件读写示例：  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    FILE *file = fopen(<span class="hljs-string">&quot;example.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>); <span class="hljs-comment">// 打开文件用于写入</span><br>    <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">NULL</span>) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;Hello, World!\n&quot;</span>); <span class="hljs-comment">// 写入文件</span><br>    fclose(file); <span class="hljs-comment">// 关闭文件</span><br><br>    file = fopen(<span class="hljs-string">&quot;example.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>); <span class="hljs-comment">// 打开文件用于读取</span><br>    <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">NULL</span>) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-type">char</span> buffer[<span class="hljs-number">100</span>];<br>    <span class="hljs-keyword">while</span> (fgets(buffer, <span class="hljs-keyword">sizeof</span>(buffer), file) &#123; <span class="hljs-comment">// 逐行读取文件</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, buffer);<br>    &#125;<br>    fclose(file); <span class="hljs-comment">// 关闭文件</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>逻辑亮点</strong>：  </p>
+<ul>
+<li><code>fopen</code>用于打开文件，<code>fclose</code>用于关闭文件。  </li>
+<li><code>fprintf</code>用于向文件写入数据，<code>fgets</code>用于从文件读取数据。  </li>
+<li>文件操作后一定要关闭文件，否则可能导致数据丢失或资源泄漏。</li>
+</ul>
 <hr>
 <h3 id="结语：C语言的“禅”"><a href="#结语：C语言的“禅”" class="headerlink" title="结语：C语言的“禅”"></a>结语：C语言的“禅”</h3><p>C语言的魅力在于它像一把瑞士军刀——简单直接，但高手能用它雕刻出艺术品。这些代码片段只是冰山一角，真正的乐趣在于：  </p>
 <ol>
