@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>C语言的魔法：那些看似简单却暗藏玄机的代码</title>
+    <link href="/2025/02/12/c-test/"/>
+    <url>/2025/02/12/c-test/</url>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong><br>C语言被称为“编程界的拉丁语”——它简洁、强大，但稍有不慎就会让你陷入深渊。许多初学者认为C语言枯燥，但实际上，它藏着无数让人拍案叫绝的“小聪明”。本文将分享几个语法简单但逻辑巧妙的代码片段，带你感受C语言独特的魅力。</p><hr><h3 id="1-不用循环打印1到100？递归的魔法"><a href="#1-不用循环打印1到100？递归的魔法" class="headerlink" title="1. 不用循环打印1到100？递归的魔法"></a>1. <strong>不用循环打印1到100？递归的魔法</strong></h3><p>如果你被要求“不用<code>for</code>或<code>while</code>打印1到100”，你会怎么做？答案可以是递归！  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">print_numbers</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">0</span>) &#123;<br>        print_numbers(n - <span class="hljs-number">1</span>); <span class="hljs-comment">// 先递归到最底层</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, n);    <span class="hljs-comment">// 再反向打印</span><br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    print_numbers(<span class="hljs-number">100</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>逻辑亮点</strong>：递归的本质是“递”和“归”的叠加。这段代码通过递归调用的“堆栈”特性反向输出数字，既避开了显式循环，又展示了函数调用栈的原理。</p><hr><h3 id="2-用异或（XOR）交换变量：位操作的优雅"><a href="#2-用异或（XOR）交换变量：位操作的优雅" class="headerlink" title="2. 用异或（XOR）交换变量：位操作的优雅"></a>2. <strong>用异或（XOR）交换变量：位操作的优雅</strong></h3><p>你知道如何不用临时变量交换两个整数吗？  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a = <span class="hljs-number">5</span>, b = <span class="hljs-number">10</span>;<br>a ^= b;  <span class="hljs-comment">// a = a ^ b</span><br>b ^= a;  <span class="hljs-comment">// b = b ^ (a ^ b) → 原始的a</span><br>a ^= b;  <span class="hljs-comment">// a = (a ^ b) ^ 原始的a → 原始的b</span><br></code></pre></td></tr></table></figure><p><strong>逻辑亮点</strong>：异或运算的特性（<code>x ^ x = 0</code>，<code>x ^ 0 = x</code>）被巧妙用于交换值。虽然现代编译器可能更擅长优化，但这种位操作仍能体现底层思维的乐趣。</p><hr><h3 id="3-函数指针：让代码“活”起来"><a href="#3-函数指针：让代码“活”起来" class="headerlink" title="3. 函数指针：让代码“活”起来"></a>3. <strong>函数指针：让代码“活”起来</strong></h3><p>C语言中函数也能作为参数传递！试试这个“万能计算器”：  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123; <span class="hljs-keyword">return</span> a + b; &#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">sub</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123; <span class="hljs-keyword">return</span> a - b; &#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">calculator</span><span class="hljs-params">(<span class="hljs-type">int</span> (*op)(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>), <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Result: %d\n&quot;</span>, op(x, y));<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    calculator(add, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// 输出8</span><br>    calculator(sub, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// 输出2</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>逻辑亮点</strong>：通过函数指针，我们可以将行为（如加法、减法）抽象为参数，这种思想是面向对象和多态性的雏形。</p><hr><h3 id="4-编译期计算：让编译器为你打工"><a href="#4-编译期计算：让编译器为你打工" class="headerlink" title="4. 编译期计算：让编译器为你打工"></a>4. <strong>编译期计算：让编译器为你打工</strong></h3><p>利用宏和编译期优化，实现“零运行时开销”的平方计算：  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> SQUARE(x) ((x) * (x))</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> result = SQUARE(<span class="hljs-number">3</span> + <span class="hljs-number">2</span>); <span class="hljs-comment">// 展开为 (3+2)*(3+2)=25</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, result);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>陷阱警告</strong>：<br>虽然宏很强大，但要注意运算符优先级！比如<code>SQUARE(a++)</code>可能导致未定义行为（展开为<code>a++ * a++</code>）。这也是为什么C++推崇<code>constexpr</code>的原因。</p><hr><h3 id="5-作用域的奥秘：局部变量与全局变量的博弈"><a href="#5-作用域的奥秘：局部变量与全局变量的博弈" class="headerlink" title="5. 作用域的奥秘：局部变量与全局变量的博弈"></a>5. <strong>作用域的奥秘：局部变量与全局变量的博弈</strong></h3><p>C语言的作用域规则看似简单，但隐藏着许多有趣的细节。看看这段代码：  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// 全局变量</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">foo</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">20</span>; <span class="hljs-comment">// 局部变量</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Local x: %d\n&quot;</span>, x); <span class="hljs-comment">// 输出20</span><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">bar</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Global x: %d\n&quot;</span>, x); <span class="hljs-comment">// 输出10</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    foo();<br>    bar();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>逻辑亮点</strong>：  </p><ul><li>局部变量会“遮蔽”同名的全局变量。  </li><li>在<code>foo</code>函数中，局部变量<code>x</code>优先于全局变量<code>x</code>。  </li><li>在<code>bar</code>函数中，由于没有局部变量<code>x</code>，全局变量<code>x</code>被使用。</li></ul><hr><h3 id="6-文件读写：C语言与文件的对话"><a href="#6-文件读写：C语言与文件的对话" class="headerlink" title="6. 文件读写：C语言与文件的对话"></a>6. <strong>文件读写：C语言与文件的对话</strong></h3><p>C语言的文件操作功能强大且灵活。以下是一个简单的文件读写示例：  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    FILE *file = fopen(<span class="hljs-string">&quot;example.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>); <span class="hljs-comment">// 打开文件用于写入</span><br>    <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">NULL</span>) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;Hello, World!\n&quot;</span>); <span class="hljs-comment">// 写入文件</span><br>    fclose(file); <span class="hljs-comment">// 关闭文件</span><br><br>    file = fopen(<span class="hljs-string">&quot;example.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>); <span class="hljs-comment">// 打开文件用于读取</span><br>    <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">NULL</span>) &#123;<br>        perror(<span class="hljs-string">&quot;Failed to open file&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-type">char</span> buffer[<span class="hljs-number">100</span>];<br>    <span class="hljs-keyword">while</span> (fgets(buffer, <span class="hljs-keyword">sizeof</span>(buffer), file) &#123; <span class="hljs-comment">// 逐行读取文件</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, buffer);<br>    &#125;<br>    fclose(file); <span class="hljs-comment">// 关闭文件</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>逻辑亮点</strong>：  </p><ul><li><code>fopen</code>用于打开文件，<code>fclose</code>用于关闭文件。  </li><li><code>fprintf</code>用于向文件写入数据，<code>fgets</code>用于从文件读取数据。  </li><li>文件操作后一定要关闭文件，否则可能导致数据丢失或资源泄漏。</li></ul><hr><h3 id="结语：C语言的“禅”"><a href="#结语：C语言的“禅”" class="headerlink" title="结语：C语言的“禅”"></a>结语：C语言的“禅”</h3><p>C语言的魅力在于它像一把瑞士军刀——简单直接，但高手能用它雕刻出艺术品。这些代码片段只是冰山一角，真正的乐趣在于：  </p><ol><li><strong>理解底层原理</strong>（如栈、位操作、内存布局），  </li><li><strong>拥抱约束</strong>（用有限的语法实现无限的可能性），  </li><li><strong>永远保持怀疑</strong>（“这段代码真的安全吗？”）。</li></ol><p>如果你对C语言产生了兴趣，不妨挑战一下：<strong>如何用递归实现快速排序？如何用指针实现链表？</strong> 答案就藏在语言的细节中。  </p><blockquote><p><strong>“C语言既让你感觉在掌控一切，又时刻提醒你：你才是那个需要小心的人。”</strong> —— 匿名程序员</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C语言</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>长河</title>
+    <link href="/2025/02/11/post/"/>
+    <url>/2025/02/11/post/</url>
+    
+    <content type="html"><![CDATA[<p>她总说，檐水击石，千年也不过磨出半寸凹痕。那时我不懂，直到某日在敦煌鸣沙山，见一弯月牙泉躺在金色沙丘之间，方知滴水穿石的执念里，藏着天地最温柔的暴力。</p><p>生命原是条不知疲倦的长河。我们在上游追逐着碎银般的浪花，看晨雾如何将山影酿成青黛色的酒。河床深处的鹅卵石被冲刷得浑圆，像极了那些被岁月包浆的往事。王维在辋川别业写下”行到水穷处，坐看云起时”，却不知九曲黄河万里沙，正是要撞碎在龙门断崖，才能化作惊雷般的瀑布。</p><p>中游的暗礁总在月光最皎洁时浮现。苏轼夜游赤壁，见江流有声，断岸千尺，方觉”哀吾生之须臾”；李白醉后捞月，方知冰凉的江水比长安的酒更醒人。那些看似偶然的漩涡，实则是命运在暗处布下的星图。就像塔克拉玛干沙漠中的胡杨，用三千年的站姿告诉我们：真正的生命从不惧怕脱水而亡，它只是把年轮刻成了等待雨季的钟摆。</p><p>当河流终于抵达入海口，咸涩的风里飘着普鲁斯特的玛德琳蛋糕香。潮水退去时，沙滩上留下的不只是贝壳，还有屈原的香草美人、梵高燃烧的向日葵、曹雪芹未完的脂砚斋批语。它们像散落的星子，在咸湿的雾气中重组着银河的密码。此刻方懂得，为何敦煌壁画上的飞天要逆风执炬——原来灰烬里开出的莲花，比火焰本身更接近永恒。</p><p>搁笔时，砚台里的墨痕正在晕开。窗外的梧桐叶将月光筛成流动的银沙，恍若看见张岱在湖心亭看雪，袁宏道在虎丘听曲，沈复在浮生六记里描摹芸娘的耳坠。这些细碎的微光在时空长河里明明灭灭，恰似寒潭渡鹤影，又像冷月葬诗魂。或许生命最动人的章节，从来不在波澜壮阔处，而在某个起风的深夜，你突然听懂了十五岁那年错过的蝉鸣。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>文学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>友链</title>
+    <link href="/2025/02/10/Links/"/>
+    <url>/2025/02/10/Links/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>友链</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
