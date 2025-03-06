@@ -19,15 +19,15 @@
   <meta name="author" content="鎏灏">
   <meta name="keywords" content="奇思妙想">
   
-    <meta name="description" content="C分支循环语句总结">
+    <meta name="description" content="C 语言 原码反码补码总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C分支循环">
-<meta property="og:url" content="https://l0x0hhh.github.io/2025/02/20/c%E5%88%86%E6%94%AF%E5%BE%AA%E7%8E%AF/index.html">
+<meta property="og:title" content="原码、反码、补码：计算机中的&quot;数学魔术&quot;">
+<meta property="og:url" content="https://l0x0hhh.github.io/2025/03/06/c%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/index.html">
 <meta property="og:site_name" content="Aurora">
-<meta property="og:description" content="C分支循环语句总结">
+<meta property="og:description" content="C 语言 原码反码补码总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-20T03:13:04.000Z">
-<meta property="article:modified_time" content="2025-02-20T03:15:25.780Z">
+<meta property="article:published_time" content="2025-03-06T07:02:42.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:04:16.718Z">
 <meta property="article:author" content="鎏灏">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>C分支循环 - Aurora</title>
+  <title>原码、反码、补码：计算机中的&#34;数学魔术&#34; - Aurora</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C分支循环"></span>
+            <span id="subtitle" data-typed-text="原码、反码、补码：计算机中的&#34;数学魔术&#34;"></span>
           
         </div>
 
@@ -218,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 11:13" pubdate>
-          2025年2月20日 上午
+        <time datetime="2025-03-06 15:02" pubdate>
+          2025年3月6日 下午
         </time>
       </span>
     
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          764 字
+          780 字
         
       </span>
     
@@ -287,64 +287,112 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C分支循环</h1>
+            <h1 id="seo-header">原码、反码、补码：计算机中的&#34;数学魔术&#34;</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="探索C语言的分支与循环语句"><a href="#探索C语言的分支与循环语句" class="headerlink" title="探索C语言的分支与循环语句"></a>探索C语言的分支与循环语句</h1><p>C语言是一种强大而灵活的编程语言，掌握它的分支和循环语句是编写高效程序的关键。本文将带你了解C语言中的分支语句（如 <code>if</code>、<code>switch</code>）和循环语句（如 <code>for</code>、<code>while</code>、<code>do-while</code>），并通过简单示例帮助你快速上手。</p>
+                <h4 id="引子：为什么需要补码？"><a href="#引子：为什么需要补码？" class="headerlink" title="引子：为什么需要补码？"></a><strong>引子：为什么需要补码？</strong></h4><p>假设你有一个老式温度计，刻度从-10°C到+30°C。如果只能使用正数表示，你会如何记录零下的温度？这就像计算机面临的困境：它只能处理0和1，却要表示正负数并正确运算。原码、反码、补码正是解决这一问题的精妙方案。</p>
 <hr>
-<h2 id="一、分支语句"><a href="#一、分支语句" class="headerlink" title="一、分支语句"></a>一、分支语句</h2><p>分支语句用于根据条件执行不同的代码块。C语言中常用的分支语句有 <code>if</code> 和 <code>switch</code>。</p>
-<h3 id="1-if-语句"><a href="#1-if-语句" class="headerlink" title="1. if 语句"></a>1. <code>if</code> 语句</h3><p><code>if</code> 语句用于判断一个条件是否为真，如果为真，则执行对应的代码块。</p>
-<h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (条件) &#123;<br>    <span class="hljs-comment">// 条件为真时执行的代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是正数\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="if-else-语句："><a href="#if-else-语句：" class="headerlink" title="if-else 语句："></a><code>if-else</code> 语句：</h4><p>如果需要在条件为假时执行另一段代码，可以使用 <code>else</code>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">-5</span>;<br><span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是正数\n&quot;</span>);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是负数或零\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="if-else-if-else-语句："><a href="#if-else-if-else-语句：" class="headerlink" title="if-else if-else 语句："></a><code>if-else if-else</code> 语句：</h4><p>多条件判断时，可以使用 <code>else if</code>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是正数\n&quot;</span>);<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是负数\n&quot;</span>);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num 是零\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="2-switch-语句"><a href="#2-switch-语句" class="headerlink" title="2. switch 语句"></a>2. <code>switch</code> 语句</h3><p><code>switch</code> 语句用于根据变量的值执行不同的代码块，适合处理多分支情况。</p>
-<h4 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">switch</span> (变量) &#123;<br>    <span class="hljs-keyword">case</span> 值<span class="hljs-number">1</span>:<br>        <span class="hljs-comment">// 变量等于值1时执行的代码</span><br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> 值<span class="hljs-number">2</span>:<br>        <span class="hljs-comment">// 变量等于值2时执行的代码</span><br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>        <span class="hljs-comment">// 变量不匹配任何case时执行的代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> day = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">switch</span> (day) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;星期一\n&quot;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;星期二\n&quot;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;星期三\n&quot;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;无效的输入\n&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="二、循环语句"><a href="#二、循环语句" class="headerlink" title="二、循环语句"></a>二、循环语句</h2><p>循环语句用于重复执行某段代码，直到满足特定条件。C语言中常用的循环语句有 <code>for</code>、<code>while</code> 和 <code>do-while</code>。</p>
-<h3 id="1-for-循环"><a href="#1-for-循环" class="headerlink" title="1. for 循环"></a>1. <code>for</code> 循环</h3><p><code>for</code> 循环适合在已知循环次数的情况下使用。</p>
-<h4 id="语法：-2"><a href="#语法：-2" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (初始化; 条件; 更新) &#123;<br>    <span class="hljs-comment">// 循环体</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">0<br>1<br>2<br>3<br>4<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="2-while-循环"><a href="#2-while-循环" class="headerlink" title="2. while 循环"></a>2. <code>while</code> 循环</h3><p><code>while</code> 循环在条件为真时重复执行代码块。</p>
-<h4 id="语法：-3"><a href="#语法：-3" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (条件) &#123;<br>    <span class="hljs-comment">// 循环体</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="示例：-3"><a href="#示例：-3" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">5</span>) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>    i++;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="输出：-1"><a href="#输出：-1" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">0<br>1<br>2<br>3<br>4<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="3-do-while-循环"><a href="#3-do-while-循环" class="headerlink" title="3. do-while 循环"></a>3. <code>do-while</code> 循环</h3><p><code>do-while</code> 循环先执行一次代码块，然后检查条件是否为真。</p>
-<h4 id="语法：-4"><a href="#语法：-4" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">do</span> &#123;<br>    <span class="hljs-comment">// 循环体</span><br>&#125; <span class="hljs-keyword">while</span> (条件);<br></code></pre></td></tr></table></figure>
-
-<h4 id="示例：-4"><a href="#示例：-4" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">do</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>    i++;<br>&#125; <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure>
-
-<h4 id="输出：-2"><a href="#输出：-2" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">0<br>1<br>2<br>3<br>4<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><ul>
-<li><strong>分支语句</strong>：<code>if</code> 和 <code>switch</code> 用于根据条件执行不同的代码块。</li>
-<li><strong>循环语句</strong>：<code>for</code>、<code>while</code> 和 <code>do-while</code> 用于重复执行代码块，直到满足特定条件。</li>
+<h3 id="一、原码：最直白的表达"><a href="#一、原码：最直白的表达" class="headerlink" title="一、原码：最直白的表达"></a><strong>一、原码：最直白的表达</strong></h3><p><strong>定义</strong>：原码是二进制的”身份证”：  </p>
+<ul>
+<li><strong>最高位为符号位</strong>（0正1负）  </li>
+<li><strong>剩余位为数值绝对值</strong></li>
 </ul>
-<p>掌握这些语句后，你可以编写更复杂的程序逻辑。试着用这些语句解决实际问题，比如计算阶乘、打印九九乘法表等，逐步提升你的编程能力！</p>
+<p><strong>例子</strong>（4位二进制）：  </p>
+<ul>
+<li><code>+3</code> → 符号位0 + 绝对值11 → <strong>0 011</strong>  </li>
+<li><code>-3</code> → 符号位1 + 绝对值11 → <strong>1 011</strong></li>
+</ul>
+<p><strong>痛点</strong>：  </p>
+<ol>
+<li><strong>零的歧义</strong>：<code>0 000</code>和<code>1 000</code>都表示零  </li>
+<li><strong>运算灾难</strong>：<code>(+1) + (-1) = 1 001 + 1 001 = 1 010 = -2</code>（明显错误！）</li>
+</ol>
 <hr>
-<p>希望这篇博客对你有所帮助！如果有任何问题，欢迎留言讨论！</p>
+<h3 id="二、反码：镜像世界的尝试"><a href="#二、反码：镜像世界的尝试" class="headerlink" title="二、反码：镜像世界的尝试"></a><strong>二、反码：镜像世界的尝试</strong></h3><p><strong>定义</strong>：  </p>
+<ul>
+<li><strong>正数</strong>：与原码相同  </li>
+<li><strong>负数</strong>：符号位不变，数值位<strong>按位取反</strong></li>
+</ul>
+<p><strong>例子</strong>：  </p>
+<ul>
+<li><code>-3</code> → 原码<code>1 011</code> → 反码<code>1 100</code></li>
+</ul>
+<p><strong>运算实验</strong>：  </p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  (+3) 0 011  </span><br>+ (-3) 1 100  <br><span class="hljs-section">= 1 111 → 反码表示-0</span><br></code></pre></td></tr></table></figure>
+<p><strong>问题</strong>：  </p>
+<ul>
+<li>零仍有<code>0 000</code>和<code>1 111</code>两种形式  </li>
+<li>跨零运算仍会出错（例如<code>-1 + 2</code>）</li>
+</ul>
+<hr>
+<h3 id="三、补码：终极解决方案"><a href="#三、补码：终极解决方案" class="headerlink" title="三、补码：终极解决方案"></a><strong>三、补码：终极解决方案</strong></h3><p><strong>定义</strong>（划重点！）：  </p>
+<ul>
+<li><strong>正数</strong>：与原码相同  </li>
+<li><strong>负数</strong>：反码 + 1（<strong>符号位参与运算</strong>）</li>
+</ul>
+<p><strong>转换三步法</strong>（以-3为例）：  </p>
+<ol>
+<li>原码：<code>1 011</code>  </li>
+<li>反码：<code>1 100</code>  </li>
+<li>补码：<code>1 100 + 1 = 1 101</code></li>
+</ol>
+<p><strong>神奇特性</strong>：  </p>
+<ul>
+<li><strong>统一加减法</strong>：减法变补码加法  </li>
+<li><strong>消除-0</strong>：补码中<code>1 111</code>表示-1而非-0  </li>
+<li><strong>自动溢出处理</strong>：超出位宽的值自然截断</li>
+</ul>
+<hr>
+<h4 id="四、补码运算的魔法演示"><a href="#四、补码运算的魔法演示" class="headerlink" title="四、补码运算的魔法演示"></a><strong>四、补码运算的魔法演示</strong></h4><p><strong>案例1</strong>：<code>(+3) + (-3)</code>  </p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  0 011  (+3补码)  </span><br>+ 1 101  (-3补码)  <br><span class="hljs-section">= 10 000 → 截断高位 → 0 000 ✅</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>案例2</strong>：<code>(-2) + (-3)</code>（4位系统）  </p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  1 110  (-2补码)  </span><br>+ 1 101  (-3补码)  <br><span class="hljs-section">= 11 011 → 截断高位 → 1 011 → 原码1 101 = -5 ❌  </span><br></code></pre></td></tr></table></figure>
+<p><strong>溢出警示</strong>：4位补码范围是-8~+7，-5仍在范围内，但若结果超出范围就会出错。</p>
+<hr>
+<h3 id="五、补码的深度理解"><a href="#五、补码的深度理解" class="headerlink" title="五、补码的深度理解"></a><strong>五、补码的深度理解</strong></h3><ol>
+<li><p><strong>模运算思维</strong>：<br>补码的本质是<strong>模数系统</strong>。以4位系统为例：  </p>
+<ul>
+<li>模&#x3D;16（2^4）  </li>
+<li><code>-3 ≡ 16 - 3 = 13 → 补码1101</code></li>
+</ul>
+</li>
+<li><p><strong>日常类比</strong>：<br>想象钟表：  </p>
+<ul>
+<li>当前时间10点，要回拨3小时 → <strong>10 - 3 &#x3D; 7</strong>  </li>
+<li>等价于向前拨13小时 → <strong>10 + 13 &#x3D; 23 → 23 mod 12 &#x3D; 7</strong></li>
+</ul>
+</li>
+<li><p><strong>硬件优势</strong>：<br>CPU只需加法器即可完成加减运算，极大简化电路设计。</p>
+</li>
+</ol>
+<hr>
+<h3 id="六、现代计算机的补码规则"><a href="#六、现代计算机的补码规则" class="headerlink" title="六、现代计算机的补码规则"></a><strong>六、现代计算机的补码规则</strong></h3><ol>
+<li><strong>固定位宽</strong>：int通常是32位  </li>
+<li><strong>最小值陷阱</strong>：  <ul>
+<li>8位补码范围：-128 ~ +127  </li>
+<li><code>-128</code>没有原码和反码形式</li>
+</ul>
+</li>
+<li><strong>符号扩展</strong>：<br>扩展位数时，正数补0，负数补1  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-3 (4位): 1101 → 8位: 11111101</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="费曼挑战：亲手验证"><a href="#费曼挑战：亲手验证" class="headerlink" title="费曼挑战：亲手验证"></a><strong>费曼挑战：亲手验证</strong></h3><p>试着用4位补码计算以下算式（答案见文末）：  </p>
+<ol>
+<li><code>(-1) + (-2)</code>  </li>
+<li><code>(+5) - (+3)</code>（转换为补码加法）  </li>
+<li><code>(-4) + (+7)</code></li>
+</ol>
+<hr>
+<h3 id="结语：数学与工程的完美联姻"><a href="#结语：数学与工程的完美联姻" class="headerlink" title="结语：数学与工程的完美联姻"></a><strong>结语：数学与工程的完美联姻</strong></h3><p>补码不仅是数学智慧的结晶，更是工程实践的典范。它教会我们：复杂问题的解决方案，往往藏在看似违反直觉的对称美中。就像黑暗中的负片显影，补码让计算机在二进制的世界里，精准描绘出了完整的数字宇宙。</p>
+<p><strong>答案</strong>：  </p>
+<ol>
+<li><code>1101 + 1110 = 1011 → -3</code>  </li>
+<li><code>0101 + 1101 = 0010 → +2</code>  </li>
+<li><code>1100 + 0111 = 0011 → +3</code></li>
+</ol>
 
                 
               </div>
@@ -390,8 +438,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C分支循环</div>
-      <div>https://l0x0hhh.github.io/2025/02/20/c分支循环/</div>
+      <div>原码、反码、补码：计算机中的&#34;数学魔术&#34;</div>
+      <div>https://l0x0hhh.github.io/2025/03/06/c原码反码补码/</div>
     </div>
     <div class="license-meta">
       
@@ -403,7 +451,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月6日</div>
         </div>
       
       
@@ -435,18 +483,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/06/c%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/" title="原码、反码、补码：计算机中的&#34;数学魔术&#34;">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">原码、反码、补码：计算机中的&#34;数学魔术&#34;</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/19/study/" title="C语言复习随笔">
-                        <span class="hidden-mobile">C语言复习随笔</span>
+                      <a href="/2025/02/20/c%E5%88%86%E6%94%AF%E5%BE%AA%E7%8E%AF/" title="C分支循环">
+                        <span class="hidden-mobile">C分支循环</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
