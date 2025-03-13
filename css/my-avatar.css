@@ -6,6 +6,8 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;   /* 将图片圆形化 */
-    transition: transform 0.5s; /* 过渡效果 */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);  /* 过渡效果 */
     margin-bottom: 50px;  /* 与下面的文字对齐 */
+    will-change: transform; /* 启用硬件加速 */
+    /*transform: translateZ(0); /* 创建独立图层 */
   }
