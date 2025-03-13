@@ -5,7 +5,7 @@
 
 
 
-<head>
+<head><!-- hexo injector head_begin start --><link rel="stylesheet" href="/css/my-avatar.css"><!-- hexo injector head_begin end -->
   <meta charset="UTF-8">
 
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
@@ -15,19 +15,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="鎏灏">
   <meta name="keywords" content="奇思妙想">
   
     <meta name="description" content="函数定义、声明、模块化开发实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言复习随笔">
+<meta property="og:title" content="C语言函数及模块化开发实践">
 <meta property="og:url" content="https://l0x0hhh.github.io/2025/02/19/study/index.html">
 <meta property="og:site_name" content="Aurora">
 <meta property="og:description" content="函数定义、声明、模块化开发实践">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-19T09:48:09.000Z">
-<meta property="article:modified_time" content="2025-02-19T10:11:17.227Z">
+<meta property="article:modified_time" content="2025-03-13T02:49:10.682Z">
 <meta property="article:author" content="鎏灏">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>C语言复习随笔 - Aurora</title>
+  <title>C语言函数及模块化开发实践 - Aurora</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -74,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"l0x0hhh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":"ture","scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"l0x0hhh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -166,6 +168,42 @@
           
           
             <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://gitee.com/l0x0hhh" target="_self">
+                <i class="iconfont icon-gitee-fill"></i>
+                <span>gitee</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/l0x0hhh" target="_self">
+                <i class="iconfont icon-github-fill"></i>
+                <span>github</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
@@ -202,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C语言复习随笔"></span>
+            <span id="subtitle" data-typed-text="C语言函数及模块化开发实践"></span>
           
         </div>
 
@@ -230,7 +268,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.3k 字
         
       </span>
     
@@ -287,7 +325,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C语言复习随笔</h1>
+            <h1 id="seo-header">C语言函数及模块化开发实践</h1>
             
             
               <div class="markdown-body">
@@ -409,7 +447,7 @@
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 头文件保护示例</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> MATH_UTILS_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MATH_UTILS_H</span><br><br><span class="hljs-comment">/* 函数声明区 */</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
 
-<h2 id="五-tips"><a href="#五-tips" class="headerlink" title="五.tips"></a>五.tips</h2><p>文件可以模块化的编写，针对每一个功能可以有相对应的函数，函数的定义可以新建.c文件，函数声明可以新建.h文件，这样方便管理，也方便调用。当在主文件想调用该函数时，要像调用库函数一样调用，即<code>#include &quot;函数声明.h&quot;</code>，然后就可以像调用库函数一样调用函数了。<br>例如我想实现相加的功能，可以新建一个add.c文件，里面实现相加功能。然后新建一个add.h文件，里面实现相加函数的声明和一些注释（用法，功能）。这样在主文件中就可以像调用库函数一样调用函数了。<strong>注意</strong>引入是<code>#include &quot;函数声明.h&quot;</code>而不是<code>#include &lt;stdio.h&gt;</code>这样。<br>静态库可以将实现相加功能的add.c文件里的代码隐藏看不见，如果你想调用这个函数，只需要在主文件中引入这个静态库即可，不需要将add.c文件里的代码暴露出来。<br>所以大佬程序员可以将函数声明即.h文件写好，然后新建一个.c文件，将函数实现写好，最后将.c文件编译成静态库，这样别人在调用你的函数时，只需要引入你的静态库即可，不需要知道你的函数实现。这样就可以买代码给客户了，客户只需要引入你的静态库即可，不需要知道你的函数实现，这样就可以保护你的代码了。</p>
+<h2 id="五-tips"><a href="#五-tips" class="headerlink" title="五.tips"></a>五.tips</h2><p>文件可以模块化的编写，针对每一个功能可以有相对应的函数，函数的定义可以新建.c文件，函数声明可以新建.h文件，这样方便管理，也方便调用。当在主文件想调用该函数时，要像调用库函数一样调用，即<code>#include &quot;函数声明.h&quot;</code>，然后就可以像调用库函数一样调用函数了。<br>例如我想实现相加的功能，可以新建一个add.c文件，里面实现相加功能。然后新建一个add.h文件，里面实现相加函数的声明和一些注释（用法，功能）。这样在主文件中就可以像调用库函数一样调用函数了。<strong>注意</strong>引入是<code>#include &quot;函数声明.h&quot;</code>而不是<code>#include &lt;stdio.h&gt;</code>这样。<br>静态库可以将实现相加功能的add.c文件里的代码隐藏看不见，如果你想调用这个函数，只需要在主文件中引入这个静态库即可，不需要将add.c文件里的代码暴露出来。<br>所以大佬程序员可以将函数声明即.h文件写好，然后新建一个.c文件，将函数实现写好，最后将.c文件编译成静态库，这样别人在调用你的函数时，只需要引入你的静态库即可，不需要知道你的函数实现。引入的话就是在你的主文件中引入静态库即<code>#pragma comment(lib, “MyLib.lib”)</code>。这样就可以买代码给客户了，客户只需要引入你的静态库即可，不需要知道你的函数实现，这样就可以保护你的代码了。</p>
 
                 
               </div>
@@ -455,7 +493,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C语言复习随笔</div>
+      <div>C语言函数及模块化开发实践</div>
       <div>https://l0x0hhh.github.io/2025/02/19/study/</div>
     </div>
     <div class="license-meta">
@@ -676,20 +714,19 @@
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
+      (function (window, document) {
+          var typing = Fluid.plugins.typing;
+          var subtitle = document.getElementById('subtitle');
+          if (!subtitle || !typing) {
+              return;
+          }
+          var text = subtitle.getAttribute('data-typed-text');
+          
+          typing(text);
+          
+      })(window, document);
   </script>
-
-
+ 
 
 
   
