@@ -21,24 +21,24 @@
   <meta name="author" content="鎏灏">
   <meta name="keywords" content="奇思妙想">
   
-    <meta name="description" content="C 语言 原码反码补码总结">
+    <meta name="description" content="这几天的感悟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原码、反码、补码：计算机中的&quot;数学魔术&quot;">
-<meta property="og:url" content="https://l0x0hhh.github.io/2025/03/06/c%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/index.html">
+<meta property="og:title" content="随笔">
+<meta property="og:url" content="https://l0x0hhh.github.io/2025/03/18/%E9%9A%8F%E7%AC%94/index.html">
 <meta property="og:site_name" content="Aurora">
-<meta property="og:description" content="C 语言 原码反码补码总结">
+<meta property="og:description" content="这几天的感悟">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-06T07:02:42.000Z">
-<meta property="article:modified_time" content="2025-03-06T07:04:16.718Z">
+<meta property="article:published_time" content="2025-03-18T07:10:11.000Z">
+<meta property="article:modified_time" content="2025-03-18T07:28:41.054Z">
 <meta property="article:author" content="鎏灏">
-<meta property="article:tag" content="C语言">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>原码、反码、补码：计算机中的&#34;数学魔术&#34; - Aurora</title>
+  <title>随笔 - Aurora</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -251,7 +251,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="原码、反码、补码：计算机中的&#34;数学魔术&#34;"></span>
+            <span id="subtitle" data-typed-text="随笔"></span>
           
         </div>
 
@@ -267,8 +267,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-06 15:02" pubdate>
-          2025年3月6日 下午
+        <time datetime="2025-03-18 15:10" pubdate>
+          2025年3月18日 下午
         </time>
       </span>
     
@@ -279,7 +279,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          780 字
+          184 字
         
       </span>
     
@@ -290,7 +290,7 @@
         
         
         
-          7 分钟
+          2 分钟
         
       </span>
     
@@ -336,112 +336,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">原码、反码、补码：计算机中的&#34;数学魔术&#34;</h1>
+            <h1 id="seo-header">随笔</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="引子：为什么需要补码？"><a href="#引子：为什么需要补码？" class="headerlink" title="引子：为什么需要补码？"></a><strong>引子：为什么需要补码？</strong></h4><p>假设你有一个老式温度计，刻度从-10°C到+30°C。如果只能使用正数表示，你会如何记录零下的温度？这就像计算机面临的困境：它只能处理0和1，却要表示正负数并正确运算。原码、反码、补码正是解决这一问题的精妙方案。</p>
-<hr>
-<h3 id="一、原码：最直白的表达"><a href="#一、原码：最直白的表达" class="headerlink" title="一、原码：最直白的表达"></a><strong>一、原码：最直白的表达</strong></h3><p><strong>定义</strong>：原码是二进制的”身份证”：  </p>
-<ul>
-<li><strong>最高位为符号位</strong>（0正1负）  </li>
-<li><strong>剩余位为数值绝对值</strong></li>
-</ul>
-<p><strong>例子</strong>（4位二进制）：  </p>
-<ul>
-<li><code>+3</code> → 符号位0 + 绝对值11 → <strong>0 011</strong>  </li>
-<li><code>-3</code> → 符号位1 + 绝对值11 → <strong>1 011</strong></li>
-</ul>
-<p><strong>痛点</strong>：  </p>
-<ol>
-<li><strong>零的歧义</strong>：<code>0 000</code>和<code>1 000</code>都表示零  </li>
-<li><strong>运算灾难</strong>：<code>(+1) + (-1) = 1 001 + 1 001 = 1 010 = -2</code>（明显错误！）</li>
-</ol>
-<hr>
-<h3 id="二、反码：镜像世界的尝试"><a href="#二、反码：镜像世界的尝试" class="headerlink" title="二、反码：镜像世界的尝试"></a><strong>二、反码：镜像世界的尝试</strong></h3><p><strong>定义</strong>：  </p>
-<ul>
-<li><strong>正数</strong>：与原码相同  </li>
-<li><strong>负数</strong>：符号位不变，数值位<strong>按位取反</strong></li>
-</ul>
-<p><strong>例子</strong>：  </p>
-<ul>
-<li><code>-3</code> → 原码<code>1 011</code> → 反码<code>1 100</code></li>
-</ul>
-<p><strong>运算实验</strong>：  </p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  (+3) 0 011  </span><br>+ (-3) 1 100  <br><span class="hljs-section">= 1 111 → 反码表示-0</span><br></code></pre></td></tr></table></figure>
-<p><strong>问题</strong>：  </p>
-<ul>
-<li>零仍有<code>0 000</code>和<code>1 111</code>两种形式  </li>
-<li>跨零运算仍会出错（例如<code>-1 + 2</code>）</li>
-</ul>
-<hr>
-<h3 id="三、补码：终极解决方案"><a href="#三、补码：终极解决方案" class="headerlink" title="三、补码：终极解决方案"></a><strong>三、补码：终极解决方案</strong></h3><p><strong>定义</strong>（划重点！）：  </p>
-<ul>
-<li><strong>正数</strong>：与原码相同  </li>
-<li><strong>负数</strong>：反码 + 1（<strong>符号位参与运算</strong>）</li>
-</ul>
-<p><strong>转换三步法</strong>（以-3为例）：  </p>
-<ol>
-<li>原码：<code>1 011</code>  </li>
-<li>反码：<code>1 100</code>  </li>
-<li>补码：<code>1 100 + 1 = 1 101</code></li>
-</ol>
-<p><strong>神奇特性</strong>：  </p>
-<ul>
-<li><strong>统一加减法</strong>：减法变补码加法  </li>
-<li><strong>消除-0</strong>：补码中<code>1 111</code>表示-1而非-0  </li>
-<li><strong>自动溢出处理</strong>：超出位宽的值自然截断</li>
-</ul>
-<hr>
-<h4 id="四、补码运算的魔法演示"><a href="#四、补码运算的魔法演示" class="headerlink" title="四、补码运算的魔法演示"></a><strong>四、补码运算的魔法演示</strong></h4><p><strong>案例1</strong>：<code>(+3) + (-3)</code>  </p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  0 011  (+3补码)  </span><br>+ 1 101  (-3补码)  <br><span class="hljs-section">= 10 000 → 截断高位 → 0 000 ✅</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>案例2</strong>：<code>(-2) + (-3)</code>（4位系统）  </p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  1 110  (-2补码)  </span><br>+ 1 101  (-3补码)  <br><span class="hljs-section">= 11 011 → 截断高位 → 1 011 → 原码1 101 = -5 ❌  </span><br></code></pre></td></tr></table></figure>
-<p><strong>溢出警示</strong>：4位补码范围是-8~+7，-5仍在范围内，但若结果超出范围就会出错。</p>
-<hr>
-<h3 id="五、补码的深度理解"><a href="#五、补码的深度理解" class="headerlink" title="五、补码的深度理解"></a><strong>五、补码的深度理解</strong></h3><ol>
-<li><p><strong>模运算思维</strong>：<br>补码的本质是<strong>模数系统</strong>。以4位系统为例：  </p>
-<ul>
-<li>模&#x3D;16（2^4）  </li>
-<li><code>-3 ≡ 16 - 3 = 13 → 补码1101</code></li>
-</ul>
-</li>
-<li><p><strong>日常类比</strong>：<br>想象钟表：  </p>
-<ul>
-<li>当前时间10点，要回拨3小时 → <strong>10 - 3 &#x3D; 7</strong>  </li>
-<li>等价于向前拨13小时 → <strong>10 + 13 &#x3D; 23 → 23 mod 12 &#x3D; 7</strong></li>
-</ul>
-</li>
-<li><p><strong>硬件优势</strong>：<br>CPU只需加法器即可完成加减运算，极大简化电路设计。</p>
-</li>
-</ol>
-<hr>
-<h3 id="六、现代计算机的补码规则"><a href="#六、现代计算机的补码规则" class="headerlink" title="六、现代计算机的补码规则"></a><strong>六、现代计算机的补码规则</strong></h3><ol>
-<li><strong>固定位宽</strong>：int通常是32位  </li>
-<li><strong>最小值陷阱</strong>：  <ul>
-<li>8位补码范围：-128 ~ +127  </li>
-<li><code>-128</code>没有原码和反码形式</li>
-</ul>
-</li>
-<li><strong>符号扩展</strong>：<br>扩展位数时，正数补0，负数补1  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-3 (4位): 1101 → 8位: 11111101</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="费曼挑战：亲手验证"><a href="#费曼挑战：亲手验证" class="headerlink" title="费曼挑战：亲手验证"></a><strong>费曼挑战：亲手验证</strong></h3><p>试着用4位补码计算以下算式（答案见文末）：  </p>
-<ol>
-<li><code>(-1) + (-2)</code>  </li>
-<li><code>(+5) - (+3)</code>（转换为补码加法）  </li>
-<li><code>(-4) + (+7)</code></li>
-</ol>
-<hr>
-<h3 id="结语：数学与工程的完美联姻"><a href="#结语：数学与工程的完美联姻" class="headerlink" title="结语：数学与工程的完美联姻"></a><strong>结语：数学与工程的完美联姻</strong></h3><p>补码不仅是数学智慧的结晶，更是工程实践的典范。它教会我们：复杂问题的解决方案，往往藏在看似违反直觉的对称美中。就像黑暗中的负片显影，补码让计算机在二进制的世界里，精准描绘出了完整的数字宇宙。</p>
-<p><strong>答案</strong>：  </p>
-<ol>
-<li><code>1101 + 1110 = 1011 → -3</code>  </li>
-<li><code>0101 + 1101 = 0010 → +2</code>  </li>
-<li><code>1100 + 0111 = 0011 → +3</code></li>
-</ol>
+                <p>我这几天并没有全身心投入到学习，也是颇为惭愧，最近迷上了看小说，学一会总想奖励自己。<br>然后我最近还是一直在死磕C语言，但是写博客的时间甚少，我想着把视频看完，做些题，感悟一下，哪一块比较难，我在专门写一篇博客。<br>我现在打算要写的博客就是c语言的指针，打算讲一下，指针数组，数组指针，函数指针，函数指针数组。<br>然后搞这个网站也是累死，大家如果想搞类似的记得弄备注，还能溯源，不然你自己魔改搞崩了都不知道怎么弄回去（；´д｀）ゞ</p>
 
                 
               </div>
@@ -460,7 +360,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categories/%E9%9A%8F%E7%AC%94/" class="category-chain-item">随笔</a>
   
   
 
@@ -475,7 +375,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C%E8%AF%AD%E8%A8%80/" class="print-no-link">#C语言</a>
+        <a href="/tags/%E9%9A%8F%E7%AC%94/" class="print-no-link">#随笔</a>
       
     </div>
   
@@ -487,8 +387,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>原码、反码、补码：计算机中的&#34;数学魔术&#34;</div>
-      <div>https://l0x0hhh.github.io/2025/03/06/c原码反码补码/</div>
+      <div>随笔</div>
+      <div>https://l0x0hhh.github.io/2025/03/18/随笔/</div>
     </div>
     <div class="license-meta">
       
@@ -500,7 +400,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月6日</div>
+          <div>2025年3月18日</div>
         </div>
       
       
@@ -532,18 +432,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/18/%E9%9A%8F%E7%AC%94/" title="随笔">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">随笔</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/20/c%E5%88%86%E6%94%AF%E5%BE%AA%E7%8E%AF/" title="C分支循环">
-                        <span class="hidden-mobile">C分支循环</span>
+                      <a href="/2025/03/06/c%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/" title="原码、反码、补码：计算机中的&#34;数学魔术&#34;">
+                        <span class="hidden-mobile">原码、反码、补码：计算机中的&#34;数学魔术&#34;</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
