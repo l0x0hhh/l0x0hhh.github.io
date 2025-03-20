@@ -237,13 +237,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/jianke.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bizhi.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="&lt;img src=&#39;/img/touxiang.png&#39; class=&#39;my-avatar&#39; /&gt; &lt;br /&gt; Never underestimate your power to change yourself"></span>
+            <span id="subtitle" data-typed-text="&lt;img src=&#39;/img/tou2.png&#39; class=&#39;my-avatar&#39; /&gt; &lt;br /&gt; Never underestimate your power to change yourself"></span>
           
         </div>
 
@@ -876,9 +876,38 @@
     </div>
   
   
+    <div class="statistics">
   
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
 </div>
 
+  
+  
+</div>
+<!-- 鼠标点击特效 -->
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+<script src="/js/anime.min.js"></script>
+<script src="/js/fireworks.js"></script>
   </footer>
 
   <!-- Scripts -->
@@ -913,7 +942,7 @@
           
           jQuery.ajax({
               type: 'GET',
-              url: 'https://v1.hitokoto.cn/?c=h&c=d&c=e&c=k',
+              url: 'https://v1.hitokoto.cn/?c=h&c=d&c=k',
               headers: {},
               dataType: 'json',
               success: function (result) {
@@ -945,7 +974,7 @@
                           }
                       }
                       // 头像
-                      apiText = "<img src='/img/avatar-gray.png' class='my-avatar' />";
+                      apiText = "<img src='/img/tou2.png' class='my-avatar' />";
                       // 样式
                       apiText += '<p style="font-size: 30px; text-align: center">『&#12288;' + hitokoto + '』</p>' +
                               '<p style="margin-top: 15px; text-align: right; font-size: 24px; color: #e0e0e0">——';
@@ -959,7 +988,7 @@
               },
               error: function (xhr, status, error) {
                   if (error) {
-                      console.error('Failed to request https://v1.hitokoto.cn/?c=h&amp;c=d&amp;c=e&amp;c=k:', error);
+                      console.error('Failed to request https://v1.hitokoto.cn/?c=h&amp;c=d&amp;c=k:', error);
                   }
                   typing(text);
               }
@@ -979,14 +1008,13 @@
 
   <script  src="/js/local-search.js" ></script>
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
   
 <script src="/js/cs.js"></script>
-<script src="/js/anime.min.js"></script>
-<script src="/js/fireworks.js"></script>
-<script src="/cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/containsWord.min.js"></script>
 
 
 
