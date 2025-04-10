@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>算法</title>
+    <link href="/2025/04/10/%E7%AE%97%E6%B3%95/"/>
+    <url>/2025/04/10/%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>无后效性是动态规划的核心特性之一，简单来说可以理解为：<strong>某个阶段的状态一旦确定，后续的决策不会改变这个状态的历史</strong>。具体表现为：</p><ol><li><p><strong>未来与过去无关</strong><br>当前状态包含了解决问题所需的全部信息，后续决策只需要基于当前状态，不需要追溯状态是如何形成的。</p></li><li><p><strong>状态是时间&#x2F;阶段的“快照”</strong><br>例如走迷宫时，若你站在坐标 (x,y)，下一步的路径选择只取决于当前位置，与你之前是从左边还是上边走到这里的路径无关。</p></li></ol><hr><h3 id="📌-典型例子"><a href="#📌-典型例子" class="headerlink" title="📌 典型例子"></a>📌 典型例子</h3><ul><li><p><strong>最短路径问题</strong>：<br>若从 A 到 C 的最短路径经过 B，那么从 B 到 C 的最短路径只取决于 B 的位置，与如何从 A 到 B 无关。</p></li><li><p><strong>斐波那契数列</strong>：<br><code>f(n) = f(n-1) + f(n-2)</code>，计算 <code>f(n)</code> 时只需知道前两项的值，不需要知道它们是如何计算的。</p></li></ul><hr><h3 id="❌-违反无后效性的情况"><a href="#❌-违反无后效性的情况" class="headerlink" title="❌ 违反无后效性的情况"></a>❌ 违反无后效性的情况</h3><p>例如在迷宫问题中，若规定某些格子<strong>经过次数不能超过 k 次</strong>，此时状态不仅要记录当前位置，还要记录历史经过次数，后续决策会受过去路径影响，此时无法直接用传统动态规划。</p><hr><h3 id="动态规划的本质"><a href="#动态规划的本质" class="headerlink" title="动态规划的本质"></a>动态规划的本质</h3><p>无后效性允许我们将问题分解为可缓存的子问题，通过记录每个状态的最优解（如 <code>dp[i][j]</code>），避免重复计算，这是动态规划高效的关键。</p><p>我将从<strong>状态转移方程</strong>开始讲起，再深入探讨<strong>动态规划的本质</strong>，最后总结动态规划解决问题的核心逻辑。</p><hr><h3 id="一、状态转移方程"><a href="#一、状态转移方程" class="headerlink" title="一、状态转移方程"></a>一、状态转移方程</h3><p><strong>状态转移方程</strong>是动态规划的核心，它定义了不同状态之间的递推关系。通过数学公式描述如何从已知子问题的解推导出当前问题的解。</p><h4 id="📌-核心公式："><a href="#📌-核心公式：" class="headerlink" title="📌 核心公式："></a>📌 核心公式：</h4><p>[<br>\text{当前状态} &#x3D; f(\text{前一或多个子状态})<br>]</p><h4 id="🌰-例子："><a href="#🌰-例子：" class="headerlink" title="🌰 例子："></a>🌰 例子：</h4><ol><li><p><strong>斐波那契数列</strong><br>[<br>dp[n] &#x3D; dp[n-1] + dp[n-2]<br>]</p><ul><li>状态定义：<code>dp[n]</code> 表示第 <code>n</code> 项的值  </li><li>转移逻辑：当前项等于前两项之和</li></ul></li><li><p><strong>背包问题</strong><br>[<br>dp[i][w] &#x3D; \max(dp[i-1][w], \ dp[i-1][w - w_i] + v_i)<br>]</p><ul><li>状态定义：<code>dp[i][w]</code> 表示前 <code>i</code> 个物品在容量 <code>w</code> 下的最大价值  </li><li>转移逻辑：选或不选第 <code>i</code> 个物品的两种情况取最大值</li></ul></li></ol><hr><h3 id="二、动态规划的本质"><a href="#二、动态规划的本质" class="headerlink" title="二、动态规划的本质"></a>二、动态规划的本质</h3><p>动态规划的本质是<strong>对递归问题的优化</strong>，核心思想是<strong>用空间换时间</strong>，通过以下三要素实现：</p><h4 id="1-最优子结构-Optimal-Substructure"><a href="#1-最优子结构-Optimal-Substructure" class="headerlink" title="1. 最优子结构 (Optimal Substructure)"></a>1. <strong>最优子结构 (Optimal Substructure)</strong></h4><p>   问题的最优解包含子问题的最优解。  </p><ul><li>例如：最短路径中，从 A→C 的最优路径必须包含中间点 B→C 的最优路径。</li></ul><h4 id="2-重叠子问题-Overlapping-Subproblems"><a href="#2-重叠子问题-Overlapping-Subproblems" class="headerlink" title="2. 重叠子问题 (Overlapping Subproblems)"></a>2. <strong>重叠子问题 (Overlapping Subproblems)</strong></h4><p>   子问题被重复计算多次，通过缓存（如 <code>dp</code> 表）避免重复计算。  </p><ul><li>例如：计算斐波那契数列时，<code>f(3)</code> 会被 <code>f(4)</code> 和 <code>f(5)</code> 重复调用。</li></ul><h4 id="3-状态转移方程-State-Transition-Equation"><a href="#3-状态转移方程-State-Transition-Equation" class="headerlink" title="3. 状态转移方程 (State Transition Equation)"></a>3. <strong>状态转移方程 (State Transition Equation)</strong></h4><p>   定义状态之间的递推关系，是动态规划算法的“发动机”。</p><hr><h3 id="三、动态规划的思维框架"><a href="#三、动态规划的思维框架" class="headerlink" title="三、动态规划的思维框架"></a>三、动态规划的思维框架</h3><ol><li><p><strong>定义状态</strong><br>确定问题需要记录的变量（如背包问题中的物品序号和剩余容量）。  </p><ul><li>例如：<code>dp[i][j]</code> 表示走到网格 <code>(i,j)</code> 的最小路径和。</li></ul></li><li><p><strong>找到转移关系</strong><br>推导如何从已知状态计算新状态（核心难点）。  </p><ul><li>例如：网格问题中，<code>dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]</code>。</li></ul></li><li><p><strong>初始化边界</strong><br>处理初始状态的赋值（如第一行或第一列的路径和）。  </p></li><li><p><strong>确定计算顺序</strong><br>确保在计算当前状态时，所需子状态已被计算（如从左到右、从底到顶）。</p></li></ol><hr><h3 id="四、动态规划的“灵魂”是什么？"><a href="#四、动态规划的“灵魂”是什么？" class="headerlink" title="四、动态规划的“灵魂”是什么？"></a>四、动态规划的“灵魂”是什么？</h3><p>动态规划的灵魂在于<strong>将问题抽象为状态空间的递推</strong>，通过以下步骤：  </p><ol><li><strong>识别关键变量</strong> → 2. <strong>构建状态定义</strong> → 3. <strong>找到递推规则</strong> → 4. <strong>利用历史状态推导未来</strong>。</li></ol><h4 id="🌰-例子对比："><a href="#🌰-例子对比：" class="headerlink" title="🌰 例子对比："></a>🌰 例子对比：</h4><ul><li><strong>暴力递归</strong>：计算斐波那契数列时，时间复杂度为 (O(2^n))，大量重复计算。  </li><li><strong>动态规划</strong>：通过 <code>dp</code> 数组存储中间结果，时间复杂度降为 (O(n))。</li></ul><hr><h3 id="五、适用场景"><a href="#五、适用场景" class="headerlink" title="五、适用场景"></a>五、适用场景</h3><p>动态规划适合解决两类问题：  </p><ol><li><strong>最优化问题</strong>：求最大值、最小值（如背包问题、最短路径）。  </li><li><strong>计数问题</strong>：求方案总数（如爬楼梯的不同方式数）。</li></ol><hr><h3 id="总结：动态规划的本质"><a href="#总结：动态规划的本质" class="headerlink" title="总结：动态规划的本质"></a>总结：动态规划的本质</h3><p>动态规划是一种<strong>通过状态定义和递推关系，将复杂问题分解为简单子问题，并通过缓存子问题的解避免重复计算</strong>的高效算法设计范式。其核心在于：  </p><ul><li><strong>状态转移方程</strong>：定义问题分解的逻辑  </li><li><strong>无后效性</strong>：保证状态可以被独立缓存  </li><li><strong>最优子结构</strong>：允许局部最优推导全局最优</li></ul><p>理解这三点，就能抓住动态规划的精髓 ✅。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>随笔</title>
     <link href="/2025/03/29/%E6%97%A5%E8%AE%B0/"/>
     <url>/2025/03/29/%E6%97%A5%E8%AE%B0/</url>
